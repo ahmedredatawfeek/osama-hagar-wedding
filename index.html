@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+</head>
+<body>
+<title>دعوة أسامه وهاجر</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: a diamond-lattice gate that splits open (the hall is "Al Massa", the diamond) onto one centred column: invitation card, countdown, venue, closing. Single committed look, deep teal night with gold and ivory paper. */
+:root {
+  --night: #0f2529;
+  --night-2: #17363b;
+  --ivory: #f4ebda;
+  --ink: #2b2320;
+  --gold: #c8a25a;
+  --gold-soft: #e8d3a0;
+  --gold-deep: #7d5d22;
+  --rose: #d8a08f;
+  --font-display: 'Aref Ruqaa', 'Amiri', 'Noto Naskh Arabic', serif;
+  --font-body: 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --lattice: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56'><path d='M28 3 53 28 28 53 3 28Z' fill='none' stroke='%23c8a25a' stroke-opacity='.14'/></svg>");
+  --lattice-strong: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='56'><path d='M28 3 53 28 28 53 3 28Z' fill='none' stroke='%23c8a25a' stroke-opacity='.26'/></svg>");
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background-color: var(--night);
+  background-image: var(--lattice);
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body.locked { overflow: hidden; }
+.root { min-height: 100vh; }
+
+/* ---------- Gate ---------- */
+.gate {
+  position: fixed; inset: 0; z-index: 50; overflow: hidden;
+  perspective: 1500px; perspective-origin: 50% 50%;
+  background: radial-gradient(ellipse at 50% 50%, #f1dca4 0%, #c8a25a 30%, #17363b 78%);
+  transition: opacity .8s ease;
+}
+.gate.fade { opacity: 0; }
+.door {
+  position: absolute; top: 0; bottom: 0; width: 50%;
+  background: linear-gradient(180deg, #1b4247 0%, #11292d 100%);
+  transition: transform 1.8s cubic-bezier(.6, 0, .25, 1);
+}
+.door.l { left: 0; transform-origin: 0 50%; box-shadow: inset -18px 0 30px rgba(0,0,0,.4), inset 4px 0 0 var(--gold); }
+.door.r { right: 0; transform-origin: 100% 50%; box-shadow: inset 18px 0 30px rgba(0,0,0,.4), inset -4px 0 0 var(--gold); }
+.panel {
+  position: absolute; left: 12%; right: 12%; top: 6%; bottom: 6%;
+  border: 1px solid rgba(200,162,90,.75); outline: 1px solid rgba(200,162,90,.28); outline-offset: 6px;
+  background-image: var(--lattice);
+}
+.gate.open .door.l { transform: rotateY(104deg); }
+.gate.open .door.r { transform: rotateY(-104deg); }
+.gate-inner { text-shadow: 0 1px 12px rgba(15,37,41,.95); }
+.open-btn { text-shadow: none; }
+.gate-inner {
+  position: relative; z-index: 2; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 16px; text-align: center;
+  padding: calc(24px + env(safe-area-inset-top, 0px)) max(24px, env(safe-area-inset-left, 0px)) calc(28px + env(safe-area-inset-bottom, 0px)) max(24px, env(safe-area-inset-right, 0px));
+  transition: opacity .6s ease;
+}
+.gate.open .gate-inner { opacity: 0; pointer-events: none; }
+.tw { position: absolute; z-index: 1; background: var(--gold-soft); transform: rotate(45deg); opacity: .15; animation: twinkle 3.6s ease-in-out infinite; }
+@keyframes twinkle { 0%, 100% { opacity: .08; } 50% { opacity: .75; } }
+
+.eyebrow { margin: 0; font-size: 1.05rem; color: var(--gold-soft); font-weight: 300; }
+.emblem { position: relative; width: 168px; height: 168px; display: grid; place-items: center; }
+.emblem svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.emblem path { fill: none; stroke: var(--gold); stroke-width: 1.4; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.4s ease forwards .2s; }
+.emblem path.in { stroke: var(--rose); stroke-width: 1; animation-delay: .9s; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.initials { position: relative; display: flex; align-items: center; gap: 14px; direction: ltr; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 3.2rem; color: var(--ivory); line-height: 1; }
+.initials i { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); display: block; }
+.gate-names { margin: 0; font-family: var(--font-display); font-size: clamp(2.6rem, 12vw, 3.6rem); line-height: 1.3; color: var(--ivory); }
+.gate-names span { color: var(--gold); font-size: .6em; padding: 0 .25em; }
+.gate-date { margin: 0; color: var(--gold-soft); font-size: 1.1rem; }
+.open-btn {
+  margin-top: 10px; font: inherit; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+  background: var(--gold); color: var(--night); border: 0; border-radius: 2px; padding: 13px 40px;
+  animation: pulse 2.6s ease-in-out infinite 3s;
+}
+.open-btn:hover { background: var(--gold-soft); }
+.open-btn:focus-visible, .map-btn:focus-visible { outline: 2px solid var(--ivory); outline-offset: 3px; }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(200,162,90,.55); } 60% { box-shadow: 0 0 0 14px rgba(200,162,90,0); } }
+.rise-in { animation: rise .9s cubic-bezier(.2,.7,.2,1) backwards; animation-delay: var(--d, 0s); }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+/* ---------- Invitation ---------- */
+.invite { max-width: 30rem; margin: 0 auto; padding-block: 36px 56px; display: flex; flex-direction: column; gap: 44px; }
+.invite.play .rise { animation: rise 1s cubic-bezier(.2,.7,.2,1) backwards; animation-delay: var(--d, 0s); }
+
+.card {
+  background: var(--ivory); color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--gold), inset 0 0 0 7px var(--ivory), inset 0 0 0 8px var(--gold), 0 24px 60px rgba(0,0,0,.4);
+  padding: 44px 26px 40px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.orn { display: block; width: 132px; height: 14px; color: var(--gold-deep); }
+.card .verse { margin: 0; font-family: 'Amiri', 'Aref Ruqaa', serif; font-size: 1.25rem; line-height: 2.1; color: var(--ink); text-wrap: balance; }
+.card .ref { margin: 0; font-size: .92rem; color: var(--gold-deep); }
+.card .lead { margin: 0; max-width: 17rem; font-size: 1.05rem; font-weight: 400; }
+.couple { display: flex; flex-direction: column; align-items: center; line-height: 1.15; margin-block: 6px; }
+.couple .n { font-family: var(--font-display); font-size: clamp(3.6rem, 17vw, 5.2rem); font-weight: 700; color: var(--ink); }
+.couple .w { font-family: var(--font-display); font-size: 1.7rem; color: var(--gold-deep); line-height: 1.4; }
+.date { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 18px; width: 100%; max-width: 18rem; margin-top: 6px; }
+.date .side { font-size: 1.25rem; font-weight: 500; }
+.date .big { font-family: var(--font-display); font-size: 4.4rem; font-weight: 700; line-height: 1; color: var(--gold-deep); }
+.date .side:first-child { text-align: left; }
+.date .side:last-child { text-align: right; }
+.when { margin: 0; font-size: 1.05rem; font-weight: 500; }
+.where { margin: 0; font-size: 1.05rem; color: #4a3f39; }
+
+.block { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.label { margin: 0; font-size: 1rem; color: var(--gold-soft); font-weight: 400; }
+.title { margin: 0; font-family: var(--font-display); font-size: clamp(2rem, 9vw, 2.6rem); font-weight: 700; line-height: 1.3; color: var(--ivory); text-wrap: balance; }
+.block .orn { color: var(--gold); }
+
+.cd { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; width: 100%; margin-top: 4px; }
+.cell { position: relative; border: 1px solid rgba(200,162,90,.5); background: rgba(255,255,255,.03); padding: 18px 4px 12px; }
+.cell::before { content: ""; position: absolute; top: -5px; left: 50%; width: 8px; height: 8px; background: var(--gold); transform: translateX(-50%) rotate(45deg); }
+.cell b { display: block; font-size: clamp(1.7rem, 8vw, 2.2rem); font-weight: 500; line-height: 1.2; color: var(--gold-soft); font-variant-numeric: tabular-nums; }
+.cell span { display: block; font-size: .9rem; color: var(--ivory); opacity: .8; }
+.done { margin: 0; font-family: var(--font-display); font-size: 1.8rem; color: var(--gold-soft); }
+
+.venue-name { font-size: clamp(2.6rem, 12vw, 3.6rem); }
+.city { margin: -6px 0 0; font-size: 1.2rem; color: var(--gold-soft); }
+.map-btn {
+  display: inline-block; margin-top: 8px; text-decoration: none; font-weight: 700; font-size: 1.05rem;
+  background: var(--gold); color: var(--night); padding: 13px 32px; border-radius: 2px;
+}
+.map-btn:hover { background: var(--gold-soft); }
+
+.closing { gap: 10px; }
+.closing .title { font-size: clamp(1.8rem, 8vw, 2.3rem); }
+.sign { margin: 0; color: var(--rose); font-family: var(--font-display); font-size: 1.5rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .door { transition-duration: .01s; }
+  .emblem path { animation: none; stroke-dashoffset: 0; }
+  .tw, .open-btn, .rise-in, .invite.play .rise { animation: none; }
+  .tw { opacity: .3; }
+}
+</style>
+<noscript><style>.gate{display:none}</style></noscript>
+
+<div class="root" dir="rtl" lang="ar">
+
+  <div class="gate" id="gate">
+    <div class="door l"><span class="panel"></span></div>
+    <div class="door r"><span class="panel"></span></div>
+    <div class="gate-inner">
+      <p class="eyebrow rise-in" style="--d:.1s">دعوة زفاف</p>
+      <div class="emblem rise-in" style="--d:.2s" aria-hidden="true">
+        <svg viewBox="0 0 160 160">
+          <path pathLength="1" d="M80 4 156 80 80 156 4 80Z"/>
+          <path class="in" pathLength="1" d="M80 26 134 80 80 134 26 80Z"/>
+        </svg>
+        <div class="initials"><span>O</span><i></i><span>H</span></div>
+      </div>
+      <h1 class="gate-names rise-in" style="--d:.5s">أسامه<span>و</span>هاجر</h1>
+      <p class="gate-date rise-in" style="--d:.7s">الخميس ٥ نوفمبر ٢٠٢٦</p>
+      <button class="open-btn rise-in" style="--d:.9s" id="openBtn" type="button">افتح الدعوة</button>
+    </div>
+  </div>
+
+  <main class="invite" id="invite">
+
+    <section class="card rise" aria-label="كارت الدعوة">
+      <svg class="orn" viewBox="0 0 132 14" aria-hidden="true">
+        <path d="M0 7H46M86 7H132" stroke="currentColor" stroke-width="1" fill="none"/>
+        <path d="M66 0 73 7 66 14 59 7Z" fill="currentColor"/>
+        <path d="M51 4 54 7 51 10 48 7Z M81 4 84 7 81 10 78 7Z" fill="currentColor"/>
+      </svg>
+      <p class="verse">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ ﴾</p>
+      <p class="ref">صدق الله العظيم · سورة الروم، آية ٢١</p>
+      <p class="lead">بكل حب وفرح، يشرفنا حضوركم لحفل زفافنا</p>
+
+      <div class="couple">
+        <span class="n">أسامه</span>
+        <span class="w">و</span>
+        <span class="n">هاجر</span>
+      </div>
+
+      <div class="date">
+        <span class="side">الخميس</span>
+        <span class="big">٥</span>
+        <span class="side">نوفمبر</span>
+      </div>
+      <p class="when">٢٠٢٦ · مساءً إن شاء الله</p>
+      <p class="where">قاعة الماسة، طريق دمنهور الزراعي</p>
+
+      <svg class="orn" viewBox="0 0 132 14" aria-hidden="true">
+        <path d="M0 7H46M86 7H132" stroke="currentColor" stroke-width="1" fill="none"/>
+        <path d="M66 0 73 7 66 14 59 7Z" fill="currentColor"/>
+      </svg>
+    </section>
+
+    <section class="block rise" style="--d:.15s" aria-label="العد التنازلي">
+      <p class="label">باقي على الفرح</p>
+      <div class="cd" id="cd">
+        <div class="cell"><b id="d">٠٠</b><span>يوم</span></div>
+        <div class="cell"><b id="h">٠٠</b><span>ساعة</span></div>
+        <div class="cell"><b id="m">٠٠</b><span>دقيقة</span></div>
+        <div class="cell"><b id="s">٠٠</b><span>ثانية</span></div>
+      </div>
+      <p class="done" id="done" hidden>النهارده فرحنا، تعالوا شاركونا</p>
+    </section>
+
+    <section class="block rise" style="--d:.3s" aria-label="مكان الحفل">
+      <p class="label">مكان الحفل</p>
+      <svg class="orn" viewBox="0 0 132 14" aria-hidden="true">
+        <path d="M0 7H46M86 7H132" stroke="currentColor" stroke-width="1" fill="none"/>
+        <path d="M66 0 73 7 66 14 59 7Z" fill="currentColor"/>
+      </svg>
+      <h2 class="title venue-name">قاعة الماسة</h2>
+      <p class="city">طريق دمنهور الزراعي</p>
+      <a class="map-btn" href="https://maps.app.goo.gl/2UNWaqUYCe68V5jq9" target="_blank" rel="noopener">افتح الموقع على الخريطة</a>
+    </section>
+
+    <section class="block closing rise" style="--d:.45s" aria-label="ختام">
+      <svg class="orn" viewBox="0 0 132 14" aria-hidden="true">
+        <path d="M0 7H46M86 7H132" stroke="currentColor" stroke-width="1" fill="none"/>
+        <path d="M66 0 73 7 66 14 59 7Z" fill="currentColor"/>
+      </svg>
+      <h2 class="title">حضوركم يكمل فرحتنا</h2>
+      <p class="sign">أسامه وهاجر</p>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function () {
+  var gate = document.getElementById('gate');
+  var invite = document.getElementById('invite');
+  var btn = document.getElementById('openBtn');
+  var body = document.body;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  body.classList.add('locked');
+
+  for (var i = 0; i < 16; i++) {
+    var t = document.createElement('i');
+    t.className = 'tw';
+    var s = 4 + Math.round(Math.random() * 5);
+    t.style.width = s + 'px';
+    t.style.height = s + 'px';
+    t.style.left = (Math.random() * 96 + 2) + '%';
+    t.style.top = (Math.random() * 94 + 3) + '%';
+    t.style.animationDelay = (Math.random() * 3.6).toFixed(2) + 's';
+    gate.appendChild(t);
+  }
+
+  function openGate() {
+    if (gate.classList.contains('open')) return;
+    gate.classList.add('open');
+    var wait = reduce ? 50 : 1700;
+    setTimeout(function () {
+      gate.classList.add('fade');
+      invite.classList.add('play');
+    }, wait);
+    setTimeout(function () {
+      gate.hidden = true;
+      body.classList.remove('locked');
+      window.scrollTo(0, 0);
+    }, wait + 850);
+  }
+  btn.addEventListener('click', openGate);
+  btn.focus({ preventScroll: true });
+
+  var digits = '٠١٢٣٤٥٦٧٨٩';
+  function ar(n) {
+    var str = String(n);
+    if (str.length < 2) str = '0' + str;
+    return str.replace(/\d/g, function (c) { return digits.charAt(+c); });
+  }
+
+  var target = new Date('2026-11-05T18:00:00+02:00').getTime();
+  var cd = document.getElementById('cd');
+  var done = document.getElementById('done');
+  var el = {
+    d: document.getElementById('d'), h: document.getElementById('h'),
+    m: document.getElementById('m'), s: document.getElementById('s')
+  };
+  function tick() {
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      cd.hidden = true;
+      done.hidden = false;
+      return;
+    }
+    var sec = Math.floor(diff / 1000);
+    el.d.textContent = ar(Math.floor(sec / 86400));
+    el.h.textContent = ar(Math.floor(sec % 86400 / 3600));
+    el.m.textContent = ar(Math.floor(sec % 3600 / 60));
+    el.s.textContent = ar(sec % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+</body>
+</html>
